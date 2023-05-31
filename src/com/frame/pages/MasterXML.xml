@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
-<panel>
+<panel layout="GridBag">
     <object class="button">
+        <constraints >
         <text>click me</text>
     </object>
     <object class="label">

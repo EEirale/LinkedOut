@@ -16,6 +16,7 @@ import java.io.File;
 public class Frame  extends JFrame {
 
     JPanel window;
+    GridBagConstraints constraints = new GridBagConstraints();
 
     private static JPanel XMLreader(String filePath){
         JPanel panel = new JPanel();
@@ -25,6 +26,14 @@ public class Frame  extends JFrame {
             Document doc = docBuilder.parse(new File(filePath));
             doc.getDocumentElement().normalize();
             System.out.println("Root element: " + doc.getDocumentElement().getNodeName());
+
+            switch(doc.getDocumentElement().getAttributes().getNamedItem("layout").getNodeValue()){
+                case "GridBag":
+                    panel.setLayout(new GridBagLayout());
+                    break;
+                default:
+                    System.out.println("default");
+            }
 
             NodeList nodeList = doc.getElementsByTagName("object");
             for (int itr = 0; itr < nodeList.getLength(); itr++) {
