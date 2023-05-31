@@ -1,13 +1,28 @@
 <?xml version="1.0"?>
 <panel layout="GridBag">
     <object class="button">
-        <constraints >
+        <constraints>
+            <insets> 10,0,10,0 </insets>
+            <gridx>0</gridx>
+            <gridy>0</gridy>
+        </constraints>
+
         <text>click me</text>
     </object>
     <object class="label">
+        <constraints>
+            <insets>10,0,10,0</insets>
+            <gridx>1</gridx>
+            <gridy>2</gridy>
+        </constraints>
         <text>label text</text>
     </object>
     <object class="textField">
+        <constraints>
+            <insets>10,0,10,0</insets>
+            <gridx>1</gridx>
+            <gridy>2</gridy>
+        </constraints>
         <text>default text</text>
     </object>
 </panel>
