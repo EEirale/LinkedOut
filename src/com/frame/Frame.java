@@ -18,6 +18,13 @@ public class Frame  extends JFrame {
     JPanel window;
     GridBagConstraints constraints = new GridBagConstraints();
 
+    private static String getTag(Element e, String tag){
+        return e.getElementsByTagName(tag).item(0).getTextContent();
+    }
+
+    private static String getAttribute(Element e, String attr){
+        return e.getAttributes().getNamedItem(attr).getNodeValue();
+    }
     private static JPanel XMLreader(String filePath){
         JPanel panel = new JPanel();
         try {
@@ -27,32 +34,36 @@ public class Frame  extends JFrame {
             doc.getDocumentElement().normalize();
             System.out.println("Root element: " + doc.getDocumentElement().getNodeName());
 
-            switch(doc.getDocumentElement().getAttributes().getNamedItem("layout").getNodeValue()){
+            switch(getAttribute(doc.getDocumentElement(), "layout")){
                 case "GridBag":
                     panel.setLayout(new GridBagLayout());
                     break;
+                case "Border":
+                    panel.setLayout(new BorderLayout());
+                    break;
                 default:
-                    System.out.println("default");
+                    panel.setLayout(new FlowLayout());
             }
 
             NodeList nodeList = doc.getElementsByTagName("object");
+
             for (int itr = 0; itr < nodeList.getLength(); itr++) {
                 Node node = nodeList.item(itr);
                 if (node.getNodeType() == Node.ELEMENT_NODE) {
-                    Element eElement = (Element) node;
-//                    System.out.println("button text: " + eElement.getElementsByTagName("text").item(0).getTextContent());
-//                    System.out.println(eElement.getAttributes().getNamedItem("class").getNodeValue());
-                    switch (eElement.getAttributes().getNamedItem("class").getNodeValue()) {
+                    Element element = (Element) node;
+//                    System.out.println("button text: " + element.getElementsByTagName("text").item(0).getTextContent());
+//                    System.out.println(element.getAttributes().getNamedItem("class").getNodeValue());
+                    switch (getAttribute(element, "class")) {
                         case "button":
-                            JButton button = new JButton(eElement.getElementsByTagName("text").item(0).getTextContent());
+                            JButton button = new JButton(getTag(element, "text"));
                             panel.add(button);
                             break;
                         case "label":
-                            JLabel label = new JLabel(eElement.getElementsByTagName("text").item(0).getTextContent());
+                            JLabel label = new JLabel(getTag(element, "text"));
                             panel.add(label);
                             break;
                         case "textField":
-                            JTextField textField = new JTextField(eElement.getElementsByTagName("text").item(0).getTextContent());
+                            JTextField textField = new JTextField(getTag(element, "text"));
                             panel.add(textField);
                             break;
                         default:
