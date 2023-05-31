@@ -26,13 +26,29 @@ public class Frame  extends JFrame {
             doc.getDocumentElement().normalize();
             System.out.println("Root element: " + doc.getDocumentElement().getNodeName());
 
-            NodeList nodeList = doc.getElementsByTagName("student");
+            NodeList nodeList = doc.getElementsByTagName("object");
             for (int itr = 0; itr < nodeList.getLength(); itr++) {
                 Node node = nodeList.item(itr);
                 if (node.getNodeType() == Node.ELEMENT_NODE) {
                     Element eElement = (Element) node;
-                    System.out.println("Student id: " + eElement.getElementsByTagName("object").item(0).getTextContent());
-                    System.out.println("layout:" + eElement.getElementsByTagName("object").item(0).getAttributes().getNamedItem("layout").getNodeValue());
+//                    System.out.println("button text: " + eElement.getElementsByTagName("text").item(0).getTextContent());
+//                    System.out.println(eElement.getAttributes().getNamedItem("class").getNodeValue());
+                    switch (eElement.getAttributes().getNamedItem("class").getNodeValue()) {
+                        case "button":
+                            JButton button = new JButton(eElement.getElementsByTagName("text").item(0).getTextContent());
+                            panel.add(button);
+                            break;
+                        case "label":
+                            JLabel label = new JLabel(eElement.getElementsByTagName("text").item(0).getTextContent());
+                            panel.add(label);
+                            break;
+                        case "textField":
+                            JTextField textField = new JTextField(eElement.getElementsByTagName("text").item(0).getTextContent());
+                            panel.add(textField);
+                            break;
+                        default:
+                            System.out.println("default");
+                    }
                 }
             }
         } catch (Exception e) {

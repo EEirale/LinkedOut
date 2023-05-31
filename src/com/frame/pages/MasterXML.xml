@@ -1,6 +1,12 @@
 <?xml version="1.0"?>
 <panel>
-    <object layout="GridBag">
-
+    <object class="button">
+        <text>click me</text>
+    </object>
+    <object class="label">
+        <text>label text</text>
+    </object>
+    <object class="textField">
+        <text>default text</text>
     </object>
 </panel>
