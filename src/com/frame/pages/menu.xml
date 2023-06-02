@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<panel layout="Grid" dimensions="2:2">
+    <object class="label" id ="menulabel1">
+        <gridx>1</gridx>
+        <gridy>1</gridy>
+        <text><![CDATA[<html><h2>HELLO</h2></html>]]></text>
+    </object>
+</panel>
