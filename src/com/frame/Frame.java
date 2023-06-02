@@ -18,8 +18,8 @@ public class Frame extends JFrame {
 
     protected static JPanel window;
     protected final static GridBagConstraints constraints = new GridBagConstraints();
-    protected final static Dictionary<String, JTextField> textFields = new Hashtable<>();
-    protected final static Dictionary<String, Component> components = new Hashtable<>();
+    public static Dictionary<String, JTextField> textFields = new Hashtable<>();
+    public final static Dictionary<String, StyledButton> buttons = new Hashtable<>();
 
 
     private static String getTag(Element e, String tag) {
@@ -90,14 +90,14 @@ public class Frame extends JFrame {
                     switch (getAttribute(element, "class")) {
                         case "button":
                             StyledButton button = new StyledButton(getTag(element, "text"), Color.BLUE, Color.WHITE);
-                            components.put(getAttribute(element, "id"), button);
+                            buttons.put(getAttribute(element, "id"), button);
 
                             if (LAYOUT == GRIDBAGLAYOUT) {
                                 setConstraints(element);
                                 panel.add(button, constraints);
-                            } else if (LAYOUT == GRIDBAGLAYOUT){
+                            } else if (LAYOUT == GRIDBAGLAYOUT) {
                                 panel.add(button, getTag(element, "position"));
-                            } else if( LAYOUT == GRIDLAYOUT) {
+                            } else if (LAYOUT == GRIDLAYOUT) {
                                 panel.add(button, Integer.parseInt(getTag(element, "gridx")), Integer.parseInt(getTag(element, "gridy")));
                             } else {
                                 panel.add(button);
@@ -106,19 +106,17 @@ public class Frame extends JFrame {
 
                         case "label":
                             JLabel label = new JLabel(getTag(element, "text"));
-                            components.put(getAttribute(element, "id"), label);
 
                             if (LAYOUT == GRIDBAGLAYOUT) {
                                 setConstraints(element);
                                 panel.add(label, constraints);
-                            } else if (LAYOUT == GRIDBAGLAYOUT){
+                            } else if (LAYOUT == GRIDBAGLAYOUT) {
                                 panel.add(label, getTag(element, "position"));
-                            } else if( LAYOUT == GRIDLAYOUT) {
+                            } else if (LAYOUT == GRIDLAYOUT) {
                                 panel.add(label, Integer.parseInt(getTag(element, "gridx")), Integer.parseInt(getTag(element, "gridy")));
                             } else {
                                 panel.add(label);
                             }
-
                             break;
 
                         case "textField":
@@ -128,9 +126,9 @@ public class Frame extends JFrame {
                             if (LAYOUT == GRIDBAGLAYOUT) {
                                 setConstraints(element);
                                 panel.add(textField, constraints);
-                            } else if (LAYOUT == GRIDBAGLAYOUT){
+                            } else if (LAYOUT == GRIDBAGLAYOUT) {
                                 panel.add(textField, getTag(element, "position"));
-                            } else if( LAYOUT == GRIDLAYOUT) {
+                            } else if (LAYOUT == GRIDLAYOUT) {
                                 panel.add(textField, Integer.parseInt(getTag(element, "gridx")), Integer.parseInt(getTag(element, "gridy")));
                             } else {
                                 panel.add(textField);
@@ -142,9 +140,9 @@ public class Frame extends JFrame {
                             if (LAYOUT == GRIDBAGLAYOUT) {
                                 setConstraints(element);
                                 panel.add(extra, constraints);
-                            } else if (LAYOUT == GRIDBAGLAYOUT){
+                            } else if (LAYOUT == GRIDBAGLAYOUT) {
                                 panel.add(extra, getTag(element, "position"));
-                            } else if( LAYOUT == GRIDLAYOUT) {
+                            } else if (LAYOUT == GRIDLAYOUT) {
                                 panel.add(extra, Integer.parseInt(getTag(element, "gridx")), Integer.parseInt(getTag(element, "gridy")));
                             } else {
                                 panel.add(extra);
@@ -167,7 +165,7 @@ public class Frame extends JFrame {
 
         window.add(XMLreader("src/com/frame/pages/MasterXML.xml"));
         this.add(window);
-
+        Actioner.setActionListeners();
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setTitle("LinkedOut");
