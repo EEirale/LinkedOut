@@ -13,21 +13,192 @@ import java.awt.*;
 import java.io.File;
 import java.util.Dictionary;
 import java.util.Hashtable;
+import java.util.Objects;
 
 public class Frame extends JFrame {
 
+    private static final String BACKGROUND_COLOR = "background-color";
+    private static final String FOREGROUND_COLOR = "foreground-color";
+    private static final String ICON = "icon";
     protected static JPanel window;
     protected final static GridBagConstraints constraints = new GridBagConstraints();
     public static Dictionary<String, JTextField> textFields = new Hashtable<>();
     public final static Dictionary<String, StyledButton> buttons = new Hashtable<>();
-
+    public final static Dictionary<String, JLabel> labels = new Hashtable<>();
 
     private static String getTag(Element e, String tag) {
-        return e.getElementsByTagName(tag).item(0).getTextContent();
+        if(e.getElementsByTagName(tag).item(0) == null)
+            return null;
+        return Objects.toString(e.getElementsByTagName(tag).item(0).getTextContent(), "");
+
     }
 
     private static String getAttribute(Element e, String attr) {
-        return e.getAttributes().getNamedItem(attr).getNodeValue();
+        if(e.getAttributes().getNamedItem(attr) == null)
+            return null;
+        return Objects.toString(e.getAttributes().getNamedItem(attr).getNodeValue(), "");
+    }
+
+    private static void setSize(Element e, Component c){
+        String size = getAttribute(e, "size");
+        if (size == null)
+            return;
+        c.setPreferredSize(new Dimension(
+                Integer.parseInt(size.split("x")[0]),
+                Integer.parseInt(size.split("x")[1])
+        ));
+    }
+
+    private static void styleComponent(Element e, StyledButton c){
+        Dictionary<String, String> attributes = new Hashtable<>();
+        attributes.put(BACKGROUND_COLOR, "");
+        attributes.put(FOREGROUND_COLOR, "");
+        attributes.put(ICON, "");
+
+        String style = getAttribute(e, "style");
+        if (style == null)
+            return;
+        style = style.replaceAll(" ", "");
+        String[] pairs = style.split(";");
+
+        for(String pair: pairs){
+            String[] split = pair.split(":");
+            attributes.put(split[0], split[1]);
+        }
+
+        switch (attributes.get(BACKGROUND_COLOR)) {
+            case "black" -> c.setBackground(Color.black);
+            case "blue" -> c.setBackground(Color.blue);
+            case "white" -> c.setBackground(Color.white);
+            case "gray" -> c.setBackground(Color.gray);
+            case "light-gray" -> c.setBackground(Color.lightGray);
+            case "orange" -> c.setBackground(Color.orange);
+            case "yellow" -> c.setBackground(Color.yellow);
+            case "red" -> c.setBackground(Color.red);
+            case "cyan" -> c.setBackground(Color.cyan);
+            default -> System.out.println("Default color");
+        }
+
+        switch (attributes.get(FOREGROUND_COLOR)) {
+            case "black" -> c.setForeground(Color.black);
+            case "blue" -> c.setForeground(Color.blue);
+            case "white" -> c.setForeground(Color.white);
+            case "gray" -> c.setForeground(Color.gray);
+            case "light-gray" -> c.setForeground(Color.lightGray);
+            case "orange" -> c.setForeground(Color.orange);
+            case "yellow" -> c.setForeground(Color.yellow);
+            case "red" -> c.setForeground(Color.red);
+            case "cyan" -> c.setForeground(Color.cyan);
+            default -> System.out.println("Default color");
+        }
+
+        if(attributes.get(ICON) != ""){
+            ImageIcon icon = new ImageIcon("src/com/frame/media/" + attributes.get(ICON));
+            Image image = icon.getImage().getScaledInstance(25, 25, Image.SCALE_DEFAULT);
+            icon.setImage(image);
+            c.setIcon(icon);
+        }
+    }
+
+    private static void styleComponent(Element e, JLabel c){
+        Dictionary<String, String> attributes = new Hashtable<>();
+        attributes.put(BACKGROUND_COLOR, "");
+        attributes.put(FOREGROUND_COLOR, "");
+        attributes.put(ICON, "");
+
+        String style = getAttribute(e, "style");
+
+        if(style == null)
+            return;
+
+        style = style.replaceAll(" ", "");
+        String[] pairs = style.split(";");
+
+        for(String pair: pairs){
+            String[] split = pair.split(":");
+            attributes.put(split[0], split[1]);
+        }
+
+        switch (attributes.get(BACKGROUND_COLOR)) {
+            case "black" -> c.setBackground(Color.black);
+            case "blue" -> c.setBackground(Color.blue);
+            case "white" -> c.setBackground(Color.white);
+            case "gray" -> c.setBackground(Color.gray);
+            case "light-gray" -> c.setBackground(Color.lightGray);
+            case "orange" -> c.setBackground(Color.orange);
+            case "yellow" -> c.setBackground(Color.yellow);
+            case "red" -> c.setBackground(Color.red);
+            case "cyan" -> c.setBackground(Color.cyan);
+            default -> System.out.println("Default color");
+        }
+
+        switch (attributes.get(FOREGROUND_COLOR)) {
+            case "black" -> c.setForeground(Color.black);
+            case "blue" -> c.setForeground(Color.blue);
+            case "white" -> c.setForeground(Color.white);
+            case "gray" -> c.setForeground(Color.gray);
+            case "light-gray" -> c.setForeground(Color.lightGray);
+            case "orange" -> c.setForeground(Color.orange);
+            case "yellow" -> c.setForeground(Color.yellow);
+            case "red" -> c.setForeground(Color.red);
+            case "cyan" -> c.setForeground(Color.cyan);
+            default -> System.out.println("Default color");
+        }
+
+        if(attributes.get(ICON) != ""){
+            ImageIcon icon = new ImageIcon("src/frame/media/" + attributes.get(ICON));
+            Image homeImage = icon.getImage().getScaledInstance(25, 25, Image.SCALE_DEFAULT);
+            icon.setImage(homeImage);
+            c.setIcon(icon);
+        }
+
+    }
+
+    private static void styleComponent(Element e, JPanel c){
+        Dictionary<String, String> attributes = new Hashtable<>();
+        attributes.put(BACKGROUND_COLOR, "");
+        attributes.put(FOREGROUND_COLOR, "");
+        attributes.put(ICON, "");
+
+        String style = getAttribute(e, "style");
+
+        if(style == null)
+            return;
+
+        style = style.replaceAll(" ", "");
+        String[] pairs = style.split(";");
+
+        for(String pair: pairs){
+            String[] split = pair.split(":");
+            attributes.put(split[0], split[1]);
+        }
+
+        switch (attributes.get(BACKGROUND_COLOR)) {
+            case "black" -> c.setBackground(Color.black);
+            case "blue" -> c.setBackground(Color.blue);
+            case "white" -> c.setBackground(Color.white);
+            case "gray" -> c.setBackground(Color.gray);
+            case "light-gray" -> c.setBackground(Color.lightGray);
+            case "orange" -> c.setBackground(Color.orange);
+            case "yellow" -> c.setBackground(Color.yellow);
+            case "red" -> c.setBackground(Color.red);
+            case "cyan" -> c.setBackground(Color.cyan);
+            default -> System.out.println("Default color");
+        }
+
+        switch (attributes.get(FOREGROUND_COLOR)) {
+            case "black" -> c.setForeground(Color.black);
+            case "blue" -> c.setForeground(Color.blue);
+            case "white" -> c.setForeground(Color.white);
+            case "gray" -> c.setForeground(Color.gray);
+            case "light-gray" -> c.setForeground(Color.lightGray);
+            case "orange" -> c.setForeground(Color.orange);
+            case "yellow" -> c.setForeground(Color.yellow);
+            case "red" -> c.setForeground(Color.red);
+            case "cyan" -> c.setForeground(Color.cyan);
+            default -> System.out.println("Default color");
+        }
+
     }
 
     private static void setConstraints(Element e) {
@@ -80,6 +251,8 @@ public class Frame extends JFrame {
                     LAYOUT = FLOWLAYOUT;
             }
 
+            styleComponent(doc.getDocumentElement(), panel);
+
             NodeList nodeList = doc.getElementsByTagName("object");
 
             for (int itr = 0; itr < nodeList.getLength(); itr++) {
@@ -89,7 +262,9 @@ public class Frame extends JFrame {
 
                     switch (getAttribute(element, "class")) {
                         case "button":
-                            StyledButton button = new StyledButton(getTag(element, "text"), Color.BLUE, Color.WHITE);
+                            StyledButton button = new StyledButton(getTag(element, "text"));
+                            styleComponent(element, button);
+                            setSize(element, button);
                             buttons.put(getAttribute(element, "id"), button);
 
                             if (LAYOUT == GRIDBAGLAYOUT) {
@@ -106,6 +281,9 @@ public class Frame extends JFrame {
 
                         case "label":
                             JLabel label = new JLabel(getTag(element, "text"));
+                            styleComponent(element, label);
+                            setSize(element, label);
+                            labels.put(getAttribute(element, "id"), label);
 
                             if (LAYOUT == GRIDBAGLAYOUT) {
                                 setConstraints(element);
@@ -121,6 +299,7 @@ public class Frame extends JFrame {
 
                         case "textField":
                             JTextField textField = new JTextField(getTag(element, "text"));
+                            setSize(element, textField);
                             textFields.put(getAttribute(element, "id"), textField);
 
                             if (LAYOUT == GRIDBAGLAYOUT) {
@@ -137,6 +316,7 @@ public class Frame extends JFrame {
 
                         case "panel":
                             JPanel extra = XMLreader("src/com/frame/pages/" + getTag(element, "href") + ".xml");
+
                             if (LAYOUT == GRIDBAGLAYOUT) {
                                 setConstraints(element);
                                 panel.add(extra, constraints);

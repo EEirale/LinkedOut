@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<panel layout="Grid" dimensions="2:2">
+<panel layout="Grid" dimensions="2:2" style="background-color: light-gray; ">
     <object class="label" id ="menulabel1">
         <gridx>1</gridx>
         <gridy>1</gridy>

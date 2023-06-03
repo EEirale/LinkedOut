@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <panel layout="GridBag">
-    <object class="button" id="button1">
+
+    <object class="button" id="button1" style="background-color:blue; foreground-color:white; icon:magnifying.png" size="150x150">
         <constraints>
             <insets>10,0,10,0</insets>
             <gridx>0</gridx>
@@ -9,14 +10,17 @@
 
         <text><![CDATA[<html><h3>Click Me</h3></html>]]></text>
     </object>
-    <object class="label" id ="label1">
+
+    <object class="label" id ="label1" size="120x110">
         <constraints>
             <insets>10,0,10,0</insets>
             <gridx>0</gridx>
             <gridy>2</gridy>
         </constraints>
+
         <text>label text</text>
     </object>
+
     <object class="textField" id ="textfield1">
         <constraints>
             <insets>10,0,10,0</insets>
@@ -25,20 +29,25 @@
         </constraints>
         <text>default text</text>
     </object>
+
     <object class="panel" id ="panel1">
         <constraints>
             <insets>10,0,10,0</insets>
             <gridx>0</gridx>
             <gridy>4</gridy>
         </constraints>
+
             <href>panelFile</href>
     </object>
+
     <object class="panel" id ="panel2">
         <constraints>
             <insets>10,0,10,0</insets>
             <gridx>0</gridx>
             <gridy>5</gridy>
         </constraints>
+
         <href>menu</href>
     </object>
+
 </panel>

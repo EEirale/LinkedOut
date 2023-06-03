@@ -12,18 +12,38 @@ public class StyledButton extends JButton {
 
     public StyledButton(String text){
         this.setText(text);
+        this.setHorizontalTextPosition(SwingConstants.LEFT);
         this.setSize();
     }
     public StyledButton(String text, Icon icon){
         this.setText(text);
         this.setIcon(icon);
+        this.setHorizontalTextPosition(SwingConstants.LEFT);
         this.setSize();
+
     }
     public StyledButton(String text, Color background, Color foreground){
         this.setText(text);
         this.setBackground(background);
         this.setForeground(foreground);
+        this.setHorizontalTextPosition(SwingConstants.LEFT);
         this.setSize();
+
+        this.addMouseListener(new MouseAdapter() {
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                changeBackground(ON_HOVER);
+            }
+
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseExited(e);
+                changeBackground(background);
+            }
+        });
     }
 
     public StyledButton(String text, Icon icon, Color background, Color foreground){
@@ -31,13 +51,31 @@ public class StyledButton extends JButton {
         this.setIcon(icon);
         this.setBackground(background);
         this.setForeground(foreground);
+        this.setHorizontalTextPosition(SwingConstants.LEFT);
         this.setSize();
+
+        this.addMouseListener(new MouseAdapter() {
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                changeBackground(ON_HOVER);
+            }
+
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseExited(e);
+                changeBackground(background);
+            }
+        });
     }
 
     public StyledButton(String text, Color background, Color foreground, Integer margin){
         this.setText(text);
         this.setBackground(background);
         this.setForeground(foreground);
+        this.setHorizontalTextPosition(SwingConstants.LEFT);
         this.setMargin(margin);
         this.addMouseListener(new MouseAdapter() {
 
@@ -62,8 +100,24 @@ public class StyledButton extends JButton {
         this.setIcon(icon);
         this.setBackground(background);
         this.setForeground(foreground);
+        this.setHorizontalTextPosition(SwingConstants.LEFT);
         this.setMargin(margin);
         //this.setSize();
+        this.addMouseListener(new MouseAdapter() {
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                changeBackground(ON_HOVER);
+            }
+
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseExited(e);
+                changeBackground(background);
+            }
+        });
     }
 
     public void setMargin(Integer px){
