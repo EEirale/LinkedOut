@@ -20,6 +20,9 @@ public class Frame extends JFrame {
     private static final String BACKGROUND_COLOR = "background-color";
     private static final String FOREGROUND_COLOR = "foreground-color";
     private static final String ICON = "icon";
+    private static final String ICON_DIM = "icon-dim";
+    private static final String MENU = "src/com/frame/pages/menu.xml";
+    private static final String HOME = "src/com/frame/pages/home.xml";
     protected static JPanel window;
     protected final static GridBagConstraints constraints = new GridBagConstraints();
     public static Dictionary<String, JTextField> textFields = new Hashtable<>();
@@ -54,6 +57,8 @@ public class Frame extends JFrame {
         attributes.put(BACKGROUND_COLOR, "");
         attributes.put(FOREGROUND_COLOR, "");
         attributes.put(ICON, "");
+        attributes.put(ICON_DIM, "");
+
 
         String style = getAttribute(e, "style");
         if (style == null)
@@ -94,7 +99,10 @@ public class Frame extends JFrame {
 
         if(attributes.get(ICON) != ""){
             ImageIcon icon = new ImageIcon("src/com/frame/media/" + attributes.get(ICON));
-            Image image = icon.getImage().getScaledInstance(25, 25, Image.SCALE_DEFAULT);
+            Image image = icon.getImage().getScaledInstance(
+                    (attributes.get(ICON_DIM) != "" ? Integer.parseInt(attributes.get(ICON_DIM).split("x")[0]) : 25),
+                    (attributes.get(ICON_DIM) != "" ? Integer.parseInt(attributes.get(ICON_DIM).split("x")[1]) : 25),
+                    Image.SCALE_DEFAULT);
             icon.setImage(image);
             c.setIcon(icon);
         }
@@ -105,6 +113,7 @@ public class Frame extends JFrame {
         attributes.put(BACKGROUND_COLOR, "");
         attributes.put(FOREGROUND_COLOR, "");
         attributes.put(ICON, "");
+        attributes.put(ICON_DIM, "");
 
         String style = getAttribute(e, "style");
 
@@ -146,9 +155,12 @@ public class Frame extends JFrame {
         }
 
         if(attributes.get(ICON) != ""){
-            ImageIcon icon = new ImageIcon("src/frame/media/" + attributes.get(ICON));
-            Image homeImage = icon.getImage().getScaledInstance(25, 25, Image.SCALE_DEFAULT);
-            icon.setImage(homeImage);
+            ImageIcon icon = new ImageIcon("src/com/frame/media/" + attributes.get(ICON));
+            Image image = icon.getImage().getScaledInstance(
+                    (attributes.get(ICON_DIM) != "" ? Integer.parseInt(attributes.get(ICON_DIM).split("x")[0]) : 25),
+                    (attributes.get(ICON_DIM) != "" ? Integer.parseInt(attributes.get(ICON_DIM).split("x")[1]) : 25),
+                    Image.SCALE_DEFAULT);
+            icon.setImage(image);
             c.setIcon(icon);
         }
 
@@ -342,13 +354,23 @@ public class Frame extends JFrame {
 
     public Frame() {
         window = new JPanel(new BorderLayout());
+        window.setPreferredSize(new Dimension(1920, 1080));
 
-        window.add(XMLreader("src/com/frame/pages/MasterXML.xml"));
+        window.add(XMLreader(MENU), BorderLayout.WEST);
+        window.add(XMLreader(HOME), BorderLayout.CENTER);
+
         this.add(window);
+
         Actioner.setActionListeners();
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setTitle("LinkedOut");
+
+        ImageIcon icon = new ImageIcon("src/com/frame/media/LinkedOut.png");
+        Image image = icon.getImage().getScaledInstance(25, 25, Image.SCALE_DEFAULT);
+        this.setIconImage(image);
+
+
         this.pack();
         this.setLocationRelativeTo(null);
         this.setMinimumSize(this.getMinimumSize());

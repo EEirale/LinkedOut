@@ -1,8 +1,43 @@
 <?xml version="1.0"?>
-<panel layout="Grid" dimensions="2:2" style="background-color: light-gray; ">
-    <object class="label" id ="menulabel1">
-        <gridx>1</gridx>
-        <gridy>1</gridy>
-        <text><![CDATA[<html><h2>HELLO</h2></html>]]></text>
+<panel layout="GridBag" style="background-color: light-gray; " size="200x800">
+    <object class="label" id ="userIcon" style="icon:UserIcon.png; icon-dim:100x100" size="100x100">
+        <constrains>
+            <gridx>0</gridx>
+            <gridy>0</gridy>
+            <insets>10,50,10,0</insets>
+        </constrains>
+        <text></text>
+    </object>
+    <object class="label" id="username">
+        <constrains>
+            <gridx>0</gridx>
+            <gridy>1</gridy>
+            <insets>10,10,10,10</insets>
+        </constrains>
+        <text></text>
+    </object>
+    <object class="button" id="accountButton" style="background-color: blue; foreground-color:white;" size="160x40">
+        <constrains>
+            <gridx>0</gridx>
+            <gridy>3</gridy>
+            <insets>10,10,10,10</insets>
+        </constrains>
+        <text><![CDATA[<html><h3>ACCOUNT</h3></html>]]></text>
+    </object>
+    <object class="button" id="feedButton" style="background-color: blue; foreground-color:white;" size="160x40">
+        <constrains>
+            <gridx>0</gridx>
+            <gridy>4</gridy>
+            <insets>10,10,10,10</insets>
+        </constrains>
+        <text><![CDATA[<html><h3>FEED</h3></html>]]></text>
+    </object>
+    <object class="button" id="jobOffersButton" style="background-color: blue; foreground-color:white;" size="160x40">
+        <constrains>
+            <gridx>0</gridx>
+            <gridy>5</gridy>
+            <insets>10,10,10,10</insets>
+        </constrains>
+        <text><![CDATA[<html><h3>JOB OFFERS</h3></html>]]></text>
     </object>
 </panel>
