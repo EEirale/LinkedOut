@@ -129,15 +129,42 @@ public class Frame extends JFrame {
         }
 
         switch (attributes.get(BACKGROUND_COLOR)) {
-            case "black" -> c.setBackground(Color.black);
-            case "blue" -> c.setBackground(Color.blue);
-            case "white" -> c.setBackground(Color.white);
-            case "gray" -> c.setBackground(Color.gray);
-            case "light-gray" -> c.setBackground(Color.lightGray);
-            case "orange" -> c.setBackground(Color.orange);
-            case "yellow" -> c.setBackground(Color.yellow);
-            case "red" -> c.setBackground(Color.red);
-            case "cyan" -> c.setBackground(Color.cyan);
+            case "black" -> {
+                c.setBackground(Color.black);
+                c.setOpaque(true);
+            }
+            case "blue" -> {
+                c.setBackground(Color.blue);
+                c.setOpaque(true);
+            }
+            case "white" -> {
+                c.setBackground(Color.white);
+                c.setOpaque(true);
+            }
+            case "gray" -> {
+                c.setBackground(Color.gray);
+                c.setOpaque(true);
+            }
+            case "light-gray" -> {
+                c.setBackground(Color.lightGray);
+                c.setOpaque(true);
+            }
+            case "orange" -> {
+                c.setBackground(Color.orange);
+                c.setOpaque(true);
+            }
+            case "yellow" -> {
+                c.setBackground(Color.yellow);
+                c.setOpaque(true);
+            }
+            case "red" -> {
+                c.setBackground(Color.red);
+                c.setOpaque(true);
+            }
+            case "cyan" -> {
+                c.setBackground(Color.cyan);
+                c.setOpaque(true);
+            }
             default -> System.out.println("Default color");
         }
 
