@@ -24,8 +24,10 @@ public class Frame extends JFrame {
     private static final String MENU = "src/com/frame/pages/menu.xml";
     private static final String HOME = "src/com/frame/pages/home.xml";
     protected static JPanel window;
+    public static JPanel homePanel;
+    //public static JPanel menuPanel;
     protected final static GridBagConstraints constraints = new GridBagConstraints();
-    public static Dictionary<String, JTextField> textFields = new Hashtable<>();
+    public final static Dictionary<String, JTextField> textFields = new Hashtable<>();
     public final static Dictionary<String, StyledButton> buttons = new Hashtable<>();
     public final static Dictionary<String, JLabel> labels = new Hashtable<>();
 
@@ -378,6 +380,8 @@ public class Frame extends JFrame {
                                 panel.add(extra);
                             }
 
+                            break;
+
                         default:
                             System.out.println("default " + getAttribute(element, "id"));
                     }
@@ -396,16 +400,19 @@ public class Frame extends JFrame {
 
         window.add(XMLreader(
                 MENU,
-                new String[]{"<html><p>Username</p></html>"}),
-                BorderLayout.WEST);
-        window.add(XMLreader(
-                HOME,
                 null),
-                BorderLayout.CENTER);
+                BorderLayout.WEST
+        );
+
+        window.add(XMLreader(
+                        HOME,
+                        null),
+                BorderLayout.CENTER
+        );
 
         this.add(window);
 
-        Actioner.setActionListeners();
+
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setTitle("LinkedOut");
@@ -419,5 +426,8 @@ public class Frame extends JFrame {
         this.setLocationRelativeTo(null);
         this.setMinimumSize(this.getMinimumSize());
         this.setVisible(true);
+
+        Actioner.menu();
+        Actioner.home();
     }
 }

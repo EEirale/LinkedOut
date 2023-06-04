@@ -8,7 +8,7 @@
         </constrains>
         <text></text>
     </object>
-    <object class="label" id="username" type="dynamic" size="200x40">
+    <object class="label" id="username" size="200x40">
         <constrains>
             <gridx>0</gridx>
             <gridy>1</gridy>
