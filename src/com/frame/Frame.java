@@ -227,7 +227,8 @@ public class Frame extends JFrame {
 
     }
 
-    private static JPanel XMLreader(String filePath) {
+    private static JPanel XMLreader(String filePath, String[] values) {
+        int i = 0;
         JPanel panel = new JPanel();
 
         Integer LAYOUT;
@@ -274,7 +275,12 @@ public class Frame extends JFrame {
 
                     switch (getAttribute(element, "class")) {
                         case "button":
-                            StyledButton button = new StyledButton(getTag(element, "text"));
+                            StyledButton button;
+                            if(getAttribute(element, "type") == "dynamic"){
+                                button = new StyledButton(values[i++]);
+                            } else {
+                                button = new StyledButton(getTag(element, "text"));
+                            }
                             styleComponent(element, button);
                             setSize(element, button);
                             buttons.put(getAttribute(element, "id"), button);
@@ -292,7 +298,12 @@ public class Frame extends JFrame {
                             break;
 
                         case "label":
-                            JLabel label = new JLabel(getTag(element, "text"));
+                            JLabel label;
+                            if(Objects.equals(getAttribute(element, "type"), "dynamic")){
+                                label = new JLabel(values[i++]);
+                            } else {
+                                label = new JLabel(getTag(element, "text"));
+                            }
                             styleComponent(element, label);
                             setSize(element, label);
                             labels.put(getAttribute(element, "id"), label);
@@ -327,7 +338,7 @@ public class Frame extends JFrame {
                             break;
 
                         case "panel":
-                            JPanel extra = XMLreader("src/com/frame/pages/" + getTag(element, "href") + ".xml");
+                            JPanel extra = XMLreader("src/com/frame/pages/" + getTag(element, "href") + ".xml", null);
 
                             if (LAYOUT == GRIDBAGLAYOUT) {
                                 setConstraints(element);
@@ -356,8 +367,14 @@ public class Frame extends JFrame {
         window = new JPanel(new BorderLayout());
         window.setPreferredSize(new Dimension(1920, 1080));
 
-        window.add(XMLreader(MENU), BorderLayout.WEST);
-        window.add(XMLreader(HOME), BorderLayout.CENTER);
+        window.add(XMLreader(
+                MENU,
+                new String[]{"<html><p>Username</p></html>"}),
+                BorderLayout.WEST);
+        window.add(XMLreader(
+                HOME,
+                null),
+                BorderLayout.CENTER);
 
         this.add(window);
 
