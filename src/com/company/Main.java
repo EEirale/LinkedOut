@@ -1,12 +1,12 @@
 package com.company;
 
 import com.frame.Frame;
-import com.utils.DB.DBManagement;
+import com.DB.DBManagement;
 
 import java.sql.SQLException;
 
 public class Main {
-    public static final String USER_NAME = "";
+    public static Integer USER_ID = null;
     public static Frame App;
     public static void main(String[] args) {
         App = new Frame();
