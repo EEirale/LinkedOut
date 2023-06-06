@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<panel layout="GridBag">
+<main layout="GridBag">
 
     <object class="button" id="button1" style="background-color:blue; foreground-color:white; icon:magnifying.png" size="150x150">
         <constraints>
@@ -50,4 +50,4 @@
         <href>menu</href>
     </object>
 
-</panel>
+</main>

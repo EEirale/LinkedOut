@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<panel layout="GridBag" style="background-color: light-gray; " size="200x800">
+<main layout="GridBag" style="background-color: light-gray; " size="200x800">
     <object class="label" id ="userIcon" style="icon:UserIcon.png; icon-dim:100x100" size="100x100">
         <constrains>
             <gridx>0</gridx>
@@ -40,4 +40,4 @@
         </constrains>
         <text><![CDATA[<html><h3>JOB OFFERS</h3></html>]]></text>
     </object>
-</panel>
+</main>

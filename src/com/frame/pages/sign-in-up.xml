@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<panel layout="GridBag">
+<main layout="GridBag">
     <object class="button" id="signInButton" style="background-color: blue; foreground-color:white;" size="160x60">
         <constraints>
             <gridx>0</gridx>
@@ -16,4 +16,4 @@
         </constraints>
         <text><![CDATA[<html><h2>Sign Up</h2></html>]]></text>
     </object>
-</panel>
+</main>

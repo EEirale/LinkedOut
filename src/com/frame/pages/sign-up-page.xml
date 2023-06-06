@@ -1,11 +1,9 @@
 <?xml version="1.0"?>
-<main layout="GridBag">
+<main layout="Grid">
     <object class="label" id ="titleLabel">
-        <constraints>
             <gridx>0</gridx>
             <gridy>0</gridy>
             <insets>0,0,0,0</insets>
-        </constraints>
         <text><![CDATA[<html><h1 style="font-size:100px">LinkedOUT</h1></html>]]></text>
     </object>
     <object class="label" id ="logoLabel" style="icon: LinkedOut.png; icon-dim:128x128;">
@@ -16,7 +14,7 @@
         </constraints>
         <text></text>
     </object>
-    <object class="panel" id="signup-signin">
+    <object class="textField" id="signup-signin">
         <constraints>
             <gridx>0</gridx>
             <gridy>2</gridy>
