@@ -415,7 +415,6 @@ public class Frame extends JFrame {
         this.add(window);
 
 
-
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setTitle("LinkedOut");
 

@@ -6,7 +6,6 @@ import com.company.Main;
 import com.frame.pages.Pages;
 
 import javax.swing.*;
-import java.awt.*;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Objects;
@@ -21,14 +20,14 @@ public class Actioner {
         Frame.buttons.get("signUpButton").addActionListener(l->{
             System.out.println("Clicked Sign UP");
 
-            signIn();
+            signUp();
         });
 
         Frame.buttons.get("signInButton").addActionListener(l->{
             Frame.window.remove(Frame.centerPanel);
             Frame.centerPanel.removeAll();
 
-            Frame.centerPanel = Frame.XMLreader(Pages.SIGN_UP, null);
+            Frame.centerPanel = Frame.XMLreader(Pages.SIGN_IN, null);
 
             refresh(Frame.centerPanel);
 
@@ -36,13 +35,26 @@ public class Actioner {
 
             refresh(Frame.window);
 
-            signUp();
+            signIn();
         });
     }
 
     public static void menu(){
         Frame.buttons.get("accountButton").addActionListener(l->{
             System.out.println("Clicked account");
+        });
+
+        Frame.buttons.get("homeButton").addActionListener(l->{
+            Frame.window.remove(Frame.centerPanel);
+            Frame.centerPanel.removeAll();
+            Frame.centerPanel = Frame.XMLreader(
+                    Pages.HOME,
+                    null);
+            refresh(Frame.centerPanel);
+            Frame.window.add(Frame.centerPanel);
+            refresh(Frame.window);
+
+            Actioner.home();
         });
 
         Frame.buttons.get("feedButton").addActionListener(l->{
@@ -116,6 +128,9 @@ public class Actioner {
 
                     Main.USER_ID = DBUser.getId(_email);
                     Main.PERSON = DBUser.validatePerson(Main.USER_ID);
+                    Main.USERNAME = DBUser.getUserName(Main.USER_ID);
+
+                    Frame.labels.get("username").setText(Main.USERNAME);
 
                     Frame.textFields.get("passwordField").setText("");
                     Frame.textFields.get("emailField").setText("");

@@ -16,6 +16,14 @@
         </constrains>
         <text></text>
     </object>
+    <object class="button" id="homeButton" style="background-color: blue; foreground-color:white;" size="160x40">
+        <constrains>
+            <gridx>0</gridx>
+            <gridy>2</gridy>
+            <insets>10,10,10,10</insets>
+        </constrains>
+        <text><![CDATA[<html><h3>HOME</h3></html>]]></text>
+    </object>
     <object class="button" id="accountButton" style="background-color: blue; foreground-color:white;" size="160x40">
         <constrains>
             <gridx>0</gridx>

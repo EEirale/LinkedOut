@@ -16,11 +16,11 @@ public class DBUser extends DBManagement{
             try {
                 createConnection();
 
-                script="SELECT gece_companies.name AS C, gece_people.name AS N, gece_people.surname AS S" +
+                script="SELECT gece_companies.name AS C, gece_people.name AS N, gece_people.surname AS S " +
                         "FROM gece_users " +
                         "LEFT OUTER JOIN gece_companies ON gece_companies.IdUser = gece_users.ID " +
                         "LEFT OUTER JOIN gece_people ON gece_users.ID = gece_people.IdUser " +
-                        "WHERE gece_users.ID =" + ID;
+                        "WHERE gece_users.ID = " + ID;
 
                 ResultSet output = statement.executeQuery(script);
                 output.next();
@@ -82,7 +82,7 @@ public class DBUser extends DBManagement{
         try {
             createConnection();
 
-            script="SELECT ID FROM gece_users WHERE 1=1 ";
+            script="SELECT ID FROM gece_users WHERE 1=1 AND Email = '"+ email +"'";
 
             ResultSet output = statement.executeQuery(script);
             output.next();

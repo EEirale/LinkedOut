@@ -13,12 +13,11 @@
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="22459553-d78e-4b88-a757-4c76a6d30ff5">
-      <console name="LinkedOUT - Connection" type="STANDARD" schema="my_linkedout" session="Main"><![CDATA[SELECT gece_companies.name, gece_people.name, gece_people.surname, gece_usersposts.PublicationDate, gece_posts.description, gece_posts.Tags  
-FROM gece_posts 
-JOIN gece_usersposts ON gece_posts.ID = gece_usersposts.IdPost 
-JOIN gece_users ON gece_usersposts.IdUser = gece_users.ID 
+      <console name="LinkedOUT - Connection" type="STANDARD" schema="my_linkedout" session="Main"><![CDATA[SELECT gece_companies.name AS C, gece_people.name AS N, gece_people.surname AS S
+FROM gece_users
 LEFT OUTER JOIN gece_companies ON gece_companies.IdUser = gece_users.ID
-LEFT OUTER JOIN gece_people ON gece_users.ID = gece_people.IdUser]]></console>
+LEFT OUTER JOIN gece_people ON gece_users.ID = gece_people.IdUser
+WHERE gece_users.ID = 13]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">
