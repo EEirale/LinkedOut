@@ -1,5 +1,6 @@
 package com.frame;
 
+import com.DB.DBJobOffers;
 import com.DB.DBPost;
 import com.DB.DBUser;
 import com.company.Main;
@@ -81,12 +82,19 @@ public class Actioner {
             Frame.window.remove(Frame.centerPanel);
             Frame.centerPanel.removeAll();
 
-            // update centerPanel
+            List<String[]> offers = DBJobOffers.getOffers();
+            for (String[] offer : offers){
+                Frame.centerPanel.add(
+                        Frame.XMLreader(
+                                Pages.POST,
+                                offer
+                        )
+                );
+            }
 
-            refresh(Frame.centerPanel);
-            Frame.scrollPane.add(Frame.centerPanel);
+            Frame.centerPanel.setLayout(new BoxLayout(Frame.centerPanel, BoxLayout.Y_AXIS));
+            Frame.scrollPane.setViewportView(Frame.centerPanel);
             Frame.window.add(Frame.scrollPane);
-
             refresh(Frame.window);
         });
     }

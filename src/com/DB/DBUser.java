@@ -1,8 +1,5 @@
 package com.DB;
 
-
-import com.company.Main;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
