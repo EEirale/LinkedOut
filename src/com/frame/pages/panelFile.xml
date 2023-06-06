@@ -1,9 +1,0 @@
-<?xml version="1.0"?>
-<main layout="Border">
-    <object class="label" id ="panellabel1">
-        <constraints>
-            <position>Center</position>
-        </constraints>
-        <text><![CDATA[<html><h2>HELLO</h2></html>]]></text>
-    </object>
-</main>

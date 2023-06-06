@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<main layout="GridBag" style="background-color: light-gray; " size="200x800">
+<main layout="GridBag" style="background-color: light-gray; " size="800x800">
     <object class="label" id ="userIcon" style="icon:UserIcon.png; icon-dim:100x100" size="100x100">
         <constrains>
             <gridx>0</gridx>

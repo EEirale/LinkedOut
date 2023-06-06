@@ -2,13 +2,18 @@ package com.frame;
 
 import com.DB.DBUser;
 import com.company.Main;
-import com.utils.Pages;
+import com.frame.pages.Pages;
 
 import javax.swing.*;
+import java.awt.*;
 import java.sql.SQLException;
 import java.util.Objects;
 
 public class Actioner {
+    public static void refresh(JPanel panel){
+        panel.revalidate();
+        panel.repaint();
+    }
     public static void home() {
 
         Frame.buttons.get("signInButton").addActionListener(l->{
@@ -20,15 +25,14 @@ public class Actioner {
         Frame.buttons.get("signUpButton").addActionListener(l->{
             Frame.window.remove(Frame.centerPanel);
             Frame.centerPanel.removeAll();
+
             Frame.centerPanel = Frame.XMLreader(Pages.SIGN_UP, null);
 
-            Frame.centerPanel.revalidate();
-            Frame.centerPanel.repaint();
+            refresh(Frame.centerPanel);
 
             Frame.window.add(Frame.centerPanel);
 
-            Frame.window.revalidate();
-            Frame.window.repaint();
+            refresh(Frame.window);
 
             singUp();
         });
@@ -38,11 +42,42 @@ public class Actioner {
         Frame.buttons.get("accountButton").addActionListener(l->{
             System.out.println("Clicked account");
         });
+
         Frame.buttons.get("feedButton").addActionListener(l->{
-            System.out.println("Clicked feed");
+            Frame.window.remove(Frame.centerPanel);
+            Frame.centerPanel.removeAll();
+
+            for (int i = 0; i < 10; i++) {
+                Frame.centerPanel.add(
+                        Frame.XMLreader(
+                                Pages.POST,
+                                new String[]{
+                                        "user",
+                                        "date",
+                                        "post",
+                                        "tag",
+                                }
+                        )
+                );
+            }
+
+            Frame.centerPanel.setLayout(new BoxLayout(Frame.centerPanel, BoxLayout.Y_AXIS));
+            Frame.scrollPane.setViewportView(Frame.centerPanel);
+            Frame.window.add(Frame.scrollPane);
+            refresh(Frame.window);
         });
+
         Frame.buttons.get("jobOffersButton").addActionListener(l->{
-            System.out.println("Clicked job offers");
+            Frame.window.remove(Frame.centerPanel);
+            Frame.centerPanel.removeAll();
+
+            // update centerPanel
+
+            refresh(Frame.centerPanel);
+            Frame.scrollPane.add(Frame.centerPanel);
+            Frame.window.add(Frame.scrollPane);
+
+            refresh(Frame.window);
         });
     }
 
@@ -82,6 +117,7 @@ public class Actioner {
                     );
 
                     Main.USER_ID = DBUser.getId(_email);
+                    Main.PERSON = DBUser.validatePerson(Main.USER_ID);
 
                     Frame.textFields.get("passwordField").setText("");
                     Frame.textFields.get("emailField").setText("");

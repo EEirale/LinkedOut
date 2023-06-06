@@ -6,7 +6,7 @@
             <gridx>0</gridx>
             <gridy>0</gridy>
         </constraints>
-        <text><![CDATA[<html><h2>Username</h2></html>]]></text>
+        <text><![CDATA[<html><h2>Email</h2></html>]]></text>
     </object>
     <object class="textField" id ="emailField" size="240x120">
         <constraints>

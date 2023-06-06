@@ -8,12 +8,13 @@
   <component name="DBNavigator.Project.DatabaseBrowserManager">
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
-    <show-object-properties value="true" />
+    <show-object-properties value="false" />
     <loaded-nodes />
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="22459553-d78e-4b88-a757-4c76a6d30ff5">
-      <console name="LinkedOUT - Connection" type="STANDARD" schema="my_linkedout" session="Pool"><![CDATA[SELECT COUNT(*) FROM gece_users WHERE 1=1 AND Email = 'g.eirale@liceococito.it' AND Password = '1234']]></console>
+      <console name="LinkedOUT - Connection" type="STANDARD" schema="my_linkedout" session="Pool"><![CDATA[SELECT COUNT(*) FROM gece_users WHERE 1=1 AND Email = 'g.eirale@liceococito.it' AND Password = '1234'
+SELECT COUNT(*) FROM gece_people WHERE 1=1 AND IdUser = 1]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">
@@ -21,6 +22,9 @@
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
     <open-files />
+  </component>
+  <component name="DBNavigator.Project.DatasetFilterManager">
+    <filter-actions connection-id="22459553-d78e-4b88-a757-4c76a6d30ff5" dataset="my_linkedout.gece_joboffer" active-filter-id="" />
   </component>
   <component name="DBNavigator.Project.ExecutionManager">
     <retain-sticky-names value="false" />

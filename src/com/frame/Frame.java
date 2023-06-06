@@ -1,6 +1,6 @@
 package com.frame;
 
-import com.utils.Pages;
+import com.frame.pages.Pages;
 import com.utils.StyledButton;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
@@ -24,7 +24,7 @@ public class Frame extends JFrame {
     private static final String ICON_DIM = "icon-dim";
     protected static JPanel window;
     public static JPanel centerPanel;
-    //public static JPanel menuPanel;
+    public static JScrollPane scrollPane = new JScrollPane(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
     protected final static GridBagConstraints constraints = new GridBagConstraints();
     public final static Dictionary<String, JTextField> textFields = new Hashtable<>();
     public final static Dictionary<String, StyledButton> buttons = new Hashtable<>();
@@ -270,7 +270,6 @@ public class Frame extends JFrame {
             DocumentBuilder docBuilder = docBuilderFactory.newDocumentBuilder();
             Document doc = docBuilder.parse(new File(filePath));
             doc.getDocumentElement().normalize();
-            System.out.println(doc.getDocumentElement());
 
             switch (getAttribute(doc.getDocumentElement(), "layout")) {
                 case "Grid":
@@ -368,7 +367,7 @@ public class Frame extends JFrame {
                             break;
 
                         case "panel":
-                            JPanel extra = XMLreader("src/com/frame/pages/" + getTag(element, "href") + ".xml", null);
+                            JPanel extra = XMLreader("src/com/frame/pages/components/" + getTag(element, "href") + ".xml", null);;
 
                             if (LAYOUT == GRIDBAGLAYOUT) {
                                 setConstraints(element);

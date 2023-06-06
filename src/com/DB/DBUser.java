@@ -8,6 +8,27 @@ public class DBUser extends DBManagement{
 
     }
 
+    public static boolean validatePerson(Integer ID){
+        Integer check = null;
+
+        try {
+            createConnection();
+
+            script="SELECT COUNT(*) FROM gece_people WHERE 1=1 " +
+                    "AND IdUser = '"+ ID +"' ";
+
+            ResultSet output = statement.executeQuery(script);
+            output.next();
+            check = output.getInt("COUNT(*)");
+
+            closeConnection();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return (check != null && check != 0);
+    }
+
     public static boolean validateUser(String email, String password) throws SQLException {
         Integer check = null;
         try {
