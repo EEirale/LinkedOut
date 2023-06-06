@@ -54,8 +54,7 @@ public class DBUser extends DBManagement{
         try {
             createConnection();
 
-            script="SELECT ID FROM gece_users WHERE 1=1 " +
-                    "AND Email = '"+ email +"' ";
+            script="SELECT ID FROM gece_users WHERE 1=1 ";
 
             ResultSet output = statement.executeQuery(script);
             output.next();

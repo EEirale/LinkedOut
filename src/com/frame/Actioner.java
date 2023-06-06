@@ -1,5 +1,6 @@
 package com.frame;
 
+import com.DB.DBPost;
 import com.DB.DBUser;
 import com.company.Main;
 import com.frame.pages.Pages;
@@ -7,6 +8,7 @@ import com.frame.pages.Pages;
 import javax.swing.*;
 import java.awt.*;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Objects;
 
 public class Actioner {
@@ -47,16 +49,12 @@ public class Actioner {
             Frame.window.remove(Frame.centerPanel);
             Frame.centerPanel.removeAll();
 
-            for (int i = 0; i < 10; i++) {
+            List<String[]> posts = DBPost.getPosts();
+            for (String[] post : posts){
                 Frame.centerPanel.add(
                         Frame.XMLreader(
                                 Pages.POST,
-                                new String[]{
-                                        "user",
-                                        "date",
-                                        "post",
-                                        "tag",
-                                }
+                                post
                         )
                 );
             }
