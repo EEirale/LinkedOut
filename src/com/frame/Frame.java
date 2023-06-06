@@ -270,8 +270,17 @@ public class Frame extends JFrame {
             DocumentBuilder docBuilder = docBuilderFactory.newDocumentBuilder();
             Document doc = docBuilder.parse(new File(filePath));
             doc.getDocumentElement().normalize();
+            System.out.println(doc.getDocumentElement());
 
             switch (getAttribute(doc.getDocumentElement(), "layout")) {
+                case "Grid":
+                    String[] dim = getAttribute(doc.getDocumentElement(), "dimensions").split(":");
+                    panel.setLayout(new GridLayout(
+                            Integer.parseInt(dim[0]),
+                            Integer.parseInt(dim[1])
+                    ));
+                    LAYOUT = GRIDLAYOUT;
+                    break;
                 case "GridBag":
                     panel.setLayout(new GridBagLayout());
                     LAYOUT = GRIDBAGLAYOUT;
@@ -280,13 +289,6 @@ public class Frame extends JFrame {
                     panel.setLayout(new BorderLayout());
                     LAYOUT = BORDERLAYOUT;
                     break;
-                case "Grid":
-                    String[] dim = getAttribute(doc.getDocumentElement(), "dimensions").split(":");
-                    panel.setLayout(new GridLayout(
-                            Integer.parseInt(dim[0]),
-                            Integer.parseInt(dim[1])
-                    ));
-                    LAYOUT = GRIDLAYOUT;
                 default:
                     panel.setLayout(new FlowLayout());
                     LAYOUT = FLOWLAYOUT;
@@ -319,7 +321,7 @@ public class Frame extends JFrame {
                             } else if (LAYOUT == GRIDBAGLAYOUT) {
                                 panel.add(button, getTag(element, "position"));
                             } else if (LAYOUT == GRIDLAYOUT) {
-                                panel.add(button, Integer.parseInt(getTag(element, "gridx")), Integer.parseInt(getTag(element, "gridy")));
+                                panel.add(button);
                             } else {
                                 panel.add(button);
                             }
@@ -342,7 +344,7 @@ public class Frame extends JFrame {
                             } else if (LAYOUT == GRIDBAGLAYOUT) {
                                 panel.add(label, getTag(element, "position"));
                             } else if (LAYOUT == GRIDLAYOUT) {
-                                panel.add(label, Integer.parseInt(getTag(element, "gridx")), Integer.parseInt(getTag(element, "gridy")));
+                                panel.add(label);
                             } else {
                                 panel.add(label);
                             }
@@ -359,7 +361,7 @@ public class Frame extends JFrame {
                             } else if (LAYOUT == GRIDBAGLAYOUT) {
                                 panel.add(textField, getTag(element, "position"));
                             } else if (LAYOUT == GRIDLAYOUT) {
-                                panel.add(textField, Integer.parseInt(getTag(element, "gridx")), Integer.parseInt(getTag(element, "gridy")));
+                                panel.add(textField);
                             } else {
                                 panel.add(textField);
                             }

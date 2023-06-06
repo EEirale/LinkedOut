@@ -7,6 +7,8 @@ public class Actioner {
 
         Frame.buttons.get("signInButton").addActionListener(l->{
             System.out.println("Clicked Sign IN");
+
+            signIn();
         });
 
         Frame.buttons.get("signUpButton").addActionListener(l->{
@@ -22,6 +24,7 @@ public class Actioner {
             Frame.window.revalidate();
             Frame.window.repaint();
 
+            singUp();
         });
     }
 
@@ -35,5 +38,20 @@ public class Actioner {
         Frame.buttons.get("jobOffersButton").addActionListener(l->{
             System.out.println("Clicked job offers");
         });
+    }
+
+    public static void singUp(){
+        Frame.buttons.get("confirmButton").addActionListener(l->{
+            System.out.println("Confirmed");
+        });
+
+        Frame.buttons.get("cancelButton").addActionListener(l->{
+            Frame.textFields.get("passwordField").setText("");
+            Frame.textFields.get("emailField").setText("");
+        });
+    }
+
+    public static void signIn(){
+
     }
 }

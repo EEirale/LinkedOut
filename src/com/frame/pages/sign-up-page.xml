@@ -1,31 +1,49 @@
 <?xml version="1.0"?>
-<main layout="Grid" dimensions="2:3">
-    <object class="label" id ="usernameLabel">
+<main layout="GridBag">
+    <object class="label" id ="email" size="120x60">
+        <constraints>
+            <insets>10,0,10,0</insets>
             <gridx>0</gridx>
             <gridy>0</gridy>
-        <text><![CDATA[<html><h4>LinkedOUT</h4></html>]]></text>
+        </constraints>
+        <text><![CDATA[<html><h2>Username</h2></html>]]></text>
     </object>
-    <object class="textField" id ="usernameField">
-        <gridx>0</gridx>
-        <gridy>1</gridy>
+    <object class="textField" id ="emailField" size="240x120">
+        <constraints>
+            <insets>20,0,20,0</insets>
+            <gridx>1</gridx>
+            <gridy>0</gridy>
+        </constraints>
     </object>
-    <object class="label" id ="passwordLabel">
-        <gridx>1</gridx>
-        <gridy>0</gridy>
-        <text><![CDATA[<html><h1>LinkedOUT</h1></html>]]></text>
+    <object class="label" id ="passwordLabel" size="240x120">
+        <constraints>
+            <insets>10,0,10,0</insets>
+            <gridx>0</gridx>
+            <gridy>1</gridy>
+        </constraints>
+        <text><![CDATA[<html><h2>Password</h2></html>]]></text>
     </object>
-    <object class="textField" id ="passwordField">
-        <gridx>1</gridx>
-        <gridy>1</gridy>
+    <object class="textField" id ="passwordField" size="240x120">
+        <constraints>
+            <insets>20,0,20,0</insets>
+            <gridx>1</gridx>
+            <gridy>1</gridy>
+        </constraints>
     </object>
-    <object class="button" id ="cancelButton">
-        <gridx>2</gridx>
-        <gridy>0</gridy>
+    <object class="button" id ="cancelButton" size="240x60" style="background-color:red; foreground-color:white;">
+        <constraints>
+            <insets>10,25,10,25</insets>
+            <gridx>0</gridx>
+            <gridy>2</gridy>
+        </constraints>
         <text><![CDATA[<html><h3>Cancel</h3></html>]]></text>
     </object>
-    <object class="button" id ="confirmButton">
-        <gridx>2</gridx>
-        <gridy>1</gridy>
+    <object class="button" id ="confirmButton" size="240x60" style="background-color:blue; foreground-color:white;">
+        <constraints>
+            <insets>10,25,10,25</insets>
+            <gridx>1</gridx>
+            <gridy>2</gridy>
+        </constraints>
         <text><![CDATA[<html><h3>Confirm</h3></html>]]></text>
     </object>
 </main>

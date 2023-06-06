@@ -25,3 +25,6 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+
+### DBManagement Class ###
+src/com/utils/DB/DBManagement.java
