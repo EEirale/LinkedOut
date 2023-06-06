@@ -4,7 +4,6 @@ import com.DB.DBJobOffers;
 import com.DB.DBPost;
 import com.DB.DBUser;
 import com.company.Main;
-import com.frame.pages.Pages;
 
 import javax.swing.*;
 import java.sql.SQLException;
@@ -22,6 +21,14 @@ public class Actioner {
             System.out.println("Clicked Sign UP");
 
             signUp();
+        });
+
+        Frame.buttons.get("signOutButton").addActionListener(l->{
+            Main.USER_ID = null;
+            Main.PERSON = false;
+            Main.USERNAME = null;
+
+            Frame.labels.get("username").setText(Main.USERNAME);
         });
 
         Frame.buttons.get("signInButton").addActionListener(l->{
@@ -47,6 +54,7 @@ public class Actioner {
 
         Frame.buttons.get("homeButton").addActionListener(l->{
             Frame.window.remove(Frame.centerPanel);
+            Frame.window.remove(Frame.scrollPane);
             Frame.centerPanel.removeAll();
             Frame.centerPanel = Frame.XMLreader(
                     Pages.HOME,
@@ -60,6 +68,7 @@ public class Actioner {
 
         Frame.buttons.get("feedButton").addActionListener(l->{
             Frame.window.remove(Frame.centerPanel);
+            Frame.window.remove(Frame.scrollPane);
             Frame.centerPanel.removeAll();
 
             List<String[]> posts = DBPost.getPosts();
@@ -80,13 +89,14 @@ public class Actioner {
 
         Frame.buttons.get("jobOffersButton").addActionListener(l->{
             Frame.window.remove(Frame.centerPanel);
+            Frame.window.remove(Frame.scrollPane);
             Frame.centerPanel.removeAll();
 
             List<String[]> offers = DBJobOffers.getOffers();
             for (String[] offer : offers){
                 Frame.centerPanel.add(
                         Frame.XMLreader(
-                                Pages.POST,
+                                Pages.JOB_OFFER,
                                 offer
                         )
                 );

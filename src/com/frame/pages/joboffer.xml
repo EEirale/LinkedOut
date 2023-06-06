@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<main layout="GridBag">
+    <object class="label" id="roleLabel"  style="background-color:light-gray;" size="480x80" type="dynamic">
+        <constraints>
+            <gridx>0</gridx>
+            <gridy>0</gridy>
+            <insets>0,0,0,0</insets>
+        </constraints>
+        <text>role</text>
+    </object>
+    <object class="label" id="dateLabel" size="120x60" type="dynamic">
+        <constraints>
+            <gridx>3</gridx>
+            <gridy>0</gridy>
+            <insets>0,0,0,0</insets>
+        </constraints>
+        <text>publication date</text>
+    </object>
+    <object class="label" id="companyLabel" style="background-color:light-gray;" size="240x60"  type="dynamic">
+        <constraints>
+            <gridx>0</gridx>
+            <gridy>1</gridy>
+            <insets>0,0,0,0</insets>
+        </constraints>
+        <text>company name</text>
+    </object>
+    <object class="label" id="contract"  style="background-color:light-gray;" size="240x60">
+        <constraints>
+            <gridx>1</gridx>
+            <gridy>3</gridy>
+            <insets>0,0,0,0</insets>
+        </constraints>
+        <text>Contract:</text>
+    </object>
+    <object class="label" id="contractLabel" style="background-color:light-gray;"  size="240x60" type="dynamic">
+        <constraints>
+            <gridx>2</gridx>
+            <gridy>3</gridy>
+            <insets>0,0,0,0</insets>
+        </constraints>
+        <text>contract</text>
+    </object>
+    <object class="label" id="salaryLabel"  style="background-color:light-gray;" size="60x60" type="dynamic">
+        <constraints>
+            <gridx>3</gridx>
+            <gridy>3</gridy>
+            <insets>0,0,0,0</insets>
+        </constraints>
+        <text>salary</text>
+    </object>
+    <object class="label" id="skillsLabel" size="240x40">
+        <constraints>
+            <gridx>1</gridx>
+            <gridy>4</gridy>
+            <insets>0,0,0,0</insets>
+        </constraints>
+        <text>Required skills:</text>
+    </object>
+    <object class="label" id="requiredSkillsLabel" size="240x40" type="dynamic">
+        <constraints>
+            <gridx>2</gridx>
+            <gridy>4</gridy>
+            <insets>0,0,0,0</insets>
+        </constraints>
+        <text>skills</text>
+    </object>
+</main>

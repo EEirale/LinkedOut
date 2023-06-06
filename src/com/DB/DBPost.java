@@ -3,7 +3,6 @@ package com.DB;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class DBPost extends DBManagement{
@@ -42,4 +41,22 @@ public class DBPost extends DBManagement{
 
         return posts;
     }
+
+//    public static void insertPost(String text, String tags, Date date, Integer id){
+//        try {
+//            createConnection();
+//
+//            script="INSERT INTO gece_posts (description, tags, Password) " +
+//                    "VALUES (" +
+//                    "'"+ email +"', " +
+//                    "'"+ Date.toString() + "', " +
+//                    "'"+ password +"')";
+//
+//            statement.executeUpdate(script);
+//
+//            closeConnection();
+//        } catch(SQLException ex) {
+//            ex.printStackTrace();
+//        }
+//    }
 }

@@ -2,12 +2,87 @@ package com.DB;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
+import java.util.EnumMap;
 
 public class DBUser extends DBManagement{
-    public static void addUser(){
+    public static void insertUser(String email, String password, Date Date){
+        try {
+            createConnection();
 
+            script="INSERT INTO gece_users (email, DateOfSubscription, Password) " +
+                    "VALUES (" +
+                    "'"+ email +"', " +
+                    "'"+ Date.toString() + "', " +
+                    "'"+ password +"')";
+
+            statement.executeUpdate(script);
+
+            closeConnection();
+        } catch(SQLException ex) {
+            ex.printStackTrace();
+        }
     }
 
+    public static void insertPerson(String name, String surname, Date Date, String occupation, String location, Integer UserId){
+        try {
+            createConnection();
+
+            script="INSERT INTO gece_people (name, surname, DateOfBirth, Occupation, Location, IdUser) " +
+                    "VALUES (" +
+                    "'"+ name +"'," +
+                    " '"+ surname +"'," +
+                    " '"+ Date.toString() +"'," +
+                    " '"+ occupation +"'," +
+                    " '"+ location +"'," +
+                    " " + UserId + ")";
+
+            statement.executeUpdate(script);
+
+            closeConnection();
+        } catch(SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public static void insertCompany(String name, String Description, Integer EmployeesNumber, String location, Integer UserId){
+        try {
+            createConnection();
+
+            script="INSERT INTO gece_people (name, Description, EmployeesNumber, Location, IdUser) " +
+                    "VALUES (" +
+                    "'"+ name +"'," +
+                    " '"+ Description +"'," +
+                    " "+ EmployeesNumber +"," +
+                    " '"+ location +"'," +
+                    " " + UserId + ")";
+
+            statement.executeUpdate(script);
+
+            closeConnection();
+        } catch(SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public static void insertCompany(String name, String Description, Integer EmployeesNumber, Integer UserId){
+        try {
+            createConnection();
+
+            script="INSERT INTO gece_people (name, Description, EmployeesNumber, Location, IdUser) " +
+                    "VALUES (" +
+                    "'"+ name +"'," +
+                    " '"+ Description +"'," +
+                    " "+ EmployeesNumber +"," +
+                    " " + UserId + ")";
+
+            statement.executeUpdate(script);
+
+            closeConnection();
+        } catch(SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
     public static String getUserName(Integer ID){
         String _user  = null;
             try {

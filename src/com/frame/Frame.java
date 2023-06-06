@@ -1,6 +1,5 @@
 package com.frame;
 
-import com.frame.pages.Pages;
 import com.utils.StyledButton;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
