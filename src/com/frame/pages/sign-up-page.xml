@@ -1,25 +1,31 @@
 <?xml version="1.0"?>
-<main layout="Grid">
-    <object class="label" id ="titleLabel">
+<main layout="Grid" dimensions="2:3">
+    <object class="label" id ="usernameLabel">
             <gridx>0</gridx>
             <gridy>0</gridy>
-            <insets>0,0,0,0</insets>
-        <text><![CDATA[<html><h1 style="font-size:100px">LinkedOUT</h1></html>]]></text>
+        <text><![CDATA[<html><h4>LinkedOUT</h4></html>]]></text>
     </object>
-    <object class="label" id ="logoLabel" style="icon: LinkedOut.png; icon-dim:128x128;">
-        <constraints>
-            <gridx>1</gridx>
-            <gridy>0</gridy>
-            <insets>0,0,0,0</insets>
-        </constraints>
-        <text></text>
+    <object class="textField" id ="usernameField">
+        <gridx>0</gridx>
+        <gridy>1</gridy>
     </object>
-    <object class="textField" id="signup-signin">
-        <constraints>
-            <gridx>0</gridx>
-            <gridy>2</gridy>
-            <insets>0,25,0,25</insets>
-        </constraints>
-        <href>sign-in-up</href>
+    <object class="label" id ="passwordLabel">
+        <gridx>1</gridx>
+        <gridy>0</gridy>
+        <text><![CDATA[<html><h1>LinkedOUT</h1></html>]]></text>
+    </object>
+    <object class="textField" id ="passwordField">
+        <gridx>1</gridx>
+        <gridy>1</gridy>
+    </object>
+    <object class="button" id ="cancelButton">
+        <gridx>2</gridx>
+        <gridy>0</gridy>
+        <text><![CDATA[<html><h3>Cancel</h3></html>]]></text>
+    </object>
+    <object class="button" id ="confirmButton">
+        <gridx>2</gridx>
+        <gridy>1</gridy>
+        <text><![CDATA[<html><h3>Confirm</h3></html>]]></text>
     </object>
 </main>

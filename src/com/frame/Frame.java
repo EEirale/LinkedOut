@@ -1,5 +1,6 @@
 package com.frame;
 
+import com.utils.Pages;
 import com.utils.StyledButton;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
@@ -21,10 +22,8 @@ public class Frame extends JFrame {
     private static final String FOREGROUND_COLOR = "foreground-color";
     private static final String ICON = "icon";
     private static final String ICON_DIM = "icon-dim";
-    private static final String MENU = "src/com/frame/pages/menu.xml";
-    private static final String HOME = "src/com/frame/pages/home.xml";
     protected static JPanel window;
-    public static JPanel homePanel;
+    public static JPanel centerPanel;
     //public static JPanel menuPanel;
     protected final static GridBagConstraints constraints = new GridBagConstraints();
     public final static Dictionary<String, JTextField> textFields = new Hashtable<>();
@@ -256,7 +255,7 @@ public class Frame extends JFrame {
 
     }
 
-    private static JPanel XMLreader(String filePath, String[] values) {
+    public static JPanel XMLreader(String filePath, String[] values) {
         int i = 0;
         JPanel panel = new JPanel();
 
@@ -398,15 +397,17 @@ public class Frame extends JFrame {
         window = new JPanel(new BorderLayout());
         window.setPreferredSize(new Dimension(1920, 1080));
 
+        centerPanel = XMLreader(
+                Pages.HOME,
+                null);
+
         window.add(XMLreader(
-                MENU,
+                Pages.MENU,
                 null),
                 BorderLayout.WEST
         );
 
-        window.add(XMLreader(
-                        HOME,
-                        null),
+        window.add(centerPanel,
                 BorderLayout.CENTER
         );
 

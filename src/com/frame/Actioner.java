@@ -1,5 +1,7 @@
 package com.frame;
 
+import com.utils.Pages;
+
 public class Actioner {
     public static void home() {
 
@@ -8,7 +10,18 @@ public class Actioner {
         });
 
         Frame.buttons.get("signUpButton").addActionListener(l->{
-            System.out.println("Clicked Sign UP");
+            Frame.window.remove(Frame.centerPanel);
+            Frame.centerPanel.removeAll();
+            Frame.centerPanel = Frame.XMLreader(Pages.SIGN_UP, null);
+
+            Frame.centerPanel.revalidate();
+            Frame.centerPanel.repaint();
+
+            Frame.window.add(Frame.centerPanel);
+
+            Frame.window.revalidate();
+            Frame.window.repaint();
+
         });
     }
 
