@@ -18,13 +18,13 @@ public class Actioner {
     }
     public static void home() {
 
-        Frame.buttons.get("signInButton").addActionListener(l->{
-            System.out.println("Clicked Sign IN");
+        Frame.buttons.get("signUpButton").addActionListener(l->{
+            System.out.println("Clicked Sign UP");
 
             signIn();
         });
 
-        Frame.buttons.get("signUpButton").addActionListener(l->{
+        Frame.buttons.get("signInButton").addActionListener(l->{
             Frame.window.remove(Frame.centerPanel);
             Frame.centerPanel.removeAll();
 
@@ -36,7 +36,7 @@ public class Actioner {
 
             refresh(Frame.window);
 
-            singUp();
+            signUp();
         });
     }
 
@@ -79,7 +79,7 @@ public class Actioner {
         });
     }
 
-    public static void singUp(){
+    public static void signIn(){
         Frame.buttons.get("confirmButton").addActionListener(l->{
             String _password = null;
             String _email = null;
@@ -138,7 +138,7 @@ public class Actioner {
         });
     }
 
-    public static void signIn(){
+    public static void signUp(){
 
     }
 }

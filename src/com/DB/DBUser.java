@@ -1,11 +1,39 @@
 package com.DB;
 
+
+import com.company.Main;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class DBUser extends DBManagement{
     public static void addUser(){
 
+    }
+
+    public static String getUserName(Integer ID){
+        String _user  = null;
+            try {
+                createConnection();
+
+                script="SELECT gece_companies.name AS C, gece_people.name AS N, gece_people.surname AS S" +
+                        "FROM gece_users " +
+                        "LEFT OUTER JOIN gece_companies ON gece_companies.IdUser = gece_users.ID " +
+                        "LEFT OUTER JOIN gece_people ON gece_users.ID = gece_people.IdUser " +
+                        "WHERE gece_users.ID =" + ID;
+
+                ResultSet output = statement.executeQuery(script);
+                output.next();
+                 _user = (output.getString("C") != null ? output.getString("C") : "");
+                _user += (output.getString("N") != null ? output.getString("N") : "");
+                _user += (output.getString("S") != null ? " " + output.getString("S") : "");
+
+                closeConnection();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+            return _user;
     }
 
     public static boolean validatePerson(Integer ID){

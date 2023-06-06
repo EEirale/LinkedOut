@@ -22,7 +22,7 @@ public class DBPost extends DBManagement{
             ResultSet output = statement.executeQuery(script);
             while (output.next()){
                 String _user = (output.getString("C") != null ? output.getString("C") : "");
-                _user += (output.getString("N") != null ? " " + output.getString("N") : "");
+                _user += (output.getString("N") != null ? output.getString("N") : "");
                 _user += (output.getString("S") != null ? " " + output.getString("S") : "");
 
 

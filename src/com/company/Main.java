@@ -7,6 +7,7 @@ import java.sql.SQLException;
 
 public class Main {
     public static Integer USER_ID = null;
+    public static String USERNAME = null;
     public static boolean PERSON;
     public static Frame App;
     public static void main(String[] args) {
