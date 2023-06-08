@@ -7,6 +7,7 @@ import com.company.Main;
 
 import javax.swing.*;
 import java.sql.SQLException;
+import java.util.Dictionary;
 import java.util.List;
 import java.util.Objects;
 
@@ -71,8 +72,8 @@ public class Actioner {
             Frame.window.remove(Frame.scrollPane);
             Frame.centerPanel.removeAll();
 
-            List<String[]> posts = DBPost.getPosts();
-            for (String[] post : posts){
+            List<Dictionary<String, String>> posts = DBPost.getPosts();
+            for (Dictionary<String, String> post : posts){
                 Frame.centerPanel.add(
                         Frame.XMLreader(
                                 Pages.POST,
@@ -92,8 +93,8 @@ public class Actioner {
             Frame.window.remove(Frame.scrollPane);
             Frame.centerPanel.removeAll();
 
-            List<String[]> offers = DBJobOffers.getOffers();
-            for (String[] offer : offers){
+            List<Dictionary<String, String>> offers = DBJobOffers.getOffers();
+            for (Dictionary<String, String> offer : offers){
                 Frame.centerPanel.add(
                         Frame.XMLreader(
                                 Pages.JOB_OFFER,

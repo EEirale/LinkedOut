@@ -16,6 +16,14 @@
         </constraints>
         <text>publication date</text>
     </object>
+    <object class="label" id="IDLabel" type="dynamic" style="display:false">
+        <constraints>
+            <gridx>2</gridx>
+            <gridy>0</gridy>
+            <insets>0,0,0,0</insets>
+        </constraints>
+        <text>publication date</text>
+    </object>
     <object class="label" id="postLabel" style="background-color:light-gray;" size="650x650" type="dynamic">
         <constraints>
             <gridx>1</gridx>

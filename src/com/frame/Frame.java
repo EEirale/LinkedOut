@@ -97,14 +97,20 @@ public class Frame extends JFrame {
             default -> System.out.println("Default color");
         }
 
-        if(attributes.get(ICON) != ""){
+        if(!Objects.equals(attributes.get(ICON), "")){
             ImageIcon icon = new ImageIcon("src/com/frame/media/" + attributes.get(ICON));
             Image image = icon.getImage().getScaledInstance(
-                    (attributes.get(ICON_DIM) != "" ? Integer.parseInt(attributes.get(ICON_DIM).split("x")[0]) : 25),
-                    (attributes.get(ICON_DIM) != "" ? Integer.parseInt(attributes.get(ICON_DIM).split("x")[1]) : 25),
+                    (!Objects.equals(attributes.get(ICON_DIM), "") ? Integer.parseInt(attributes.get(ICON_DIM).split("x")[0]) : 25),
+                    (!Objects.equals(attributes.get(ICON_DIM), "") ? Integer.parseInt(attributes.get(ICON_DIM).split("x")[1]) : 25),
                     Image.SCALE_DEFAULT);
             icon.setImage(image);
             c.setIcon(icon);
+        }
+
+        if(!Objects.equals(attributes.get("display"), "")){
+            c.setVisible(
+                    (Objects.equals(attributes.get("display"), "true"))
+            );
         }
     }
 
@@ -181,14 +187,21 @@ public class Frame extends JFrame {
             default -> System.out.println("Default color");
         }
 
-        if(attributes.get(ICON) != ""){
+        if(!Objects.equals(attributes.get(ICON), "")){
             ImageIcon icon = new ImageIcon("src/com/frame/media/" + attributes.get(ICON));
             Image image = icon.getImage().getScaledInstance(
-                    (attributes.get(ICON_DIM) != "" ? Integer.parseInt(attributes.get(ICON_DIM).split("x")[0]) : 25),
-                    (attributes.get(ICON_DIM) != "" ? Integer.parseInt(attributes.get(ICON_DIM).split("x")[1]) : 25),
+                    (!Objects.equals(attributes.get(ICON_DIM), "") ? Integer.parseInt(attributes.get(ICON_DIM).split("x")[0]) : 25),
+                    (!Objects.equals(attributes.get(ICON_DIM), "") ? Integer.parseInt(attributes.get(ICON_DIM).split("x")[1]) : 25),
                     Image.SCALE_DEFAULT);
             icon.setImage(image);
             c.setIcon(icon);
+        }
+
+
+        if(!Objects.equals(attributes.get("display"), "")){
+            c.setVisible(
+                    (Objects.equals(attributes.get("display"), "true"))
+            );
         }
 
     }
@@ -238,6 +251,13 @@ public class Frame extends JFrame {
             default -> System.out.println("Default color");
         }
 
+
+        if(!Objects.equals(attributes.get("display"), "")){
+            c.setVisible(
+                    (Objects.equals(attributes.get("display"), "true"))
+            );
+        }
+
     }
 
     private static void setConstraints(Element e) {
@@ -254,7 +274,7 @@ public class Frame extends JFrame {
 
     }
 
-    public static JPanel XMLreader(String filePath, String[] values) {
+    public static JPanel XMLreader(String filePath, Dictionary<String, String> values) {
         int i = 0;
         JPanel panel = new JPanel();
 
@@ -304,8 +324,8 @@ public class Frame extends JFrame {
                     switch (getAttribute(element, "class")) {
                         case "button":
                             StyledButton button;
-                            if(getAttribute(element, "type") == "dynamic"){
-                                button = new StyledButton(values[i++]);
+                            if(Objects.equals(getAttribute(element, "type"), "dynamic")){
+                                button = new StyledButton(values.get(getAttribute(element, "id")));
                             } else {
                                 button = new StyledButton(getTag(element, "text"));
                             }
@@ -316,7 +336,7 @@ public class Frame extends JFrame {
                             if (LAYOUT == GRIDBAGLAYOUT) {
                                 setConstraints(element);
                                 panel.add(button, constraints);
-                            } else if (LAYOUT == GRIDBAGLAYOUT) {
+                            } else if (LAYOUT == BORDERLAYOUT) {
                                 panel.add(button, getTag(element, "position"));
                             } else if (LAYOUT == GRIDLAYOUT) {
                                 panel.add(button);
@@ -328,7 +348,7 @@ public class Frame extends JFrame {
                         case "label":
                             JLabel label;
                             if(Objects.equals(getAttribute(element, "type"), "dynamic")){
-                                label = new JLabel(values[i++]);
+                                label = new JLabel(values.get(getAttribute(element, "id")));
                             } else {
                                 label = new JLabel(getTag(element, "text"));
                             }
@@ -339,7 +359,7 @@ public class Frame extends JFrame {
                             if (LAYOUT == GRIDBAGLAYOUT) {
                                 setConstraints(element);
                                 panel.add(label, constraints);
-                            } else if (LAYOUT == GRIDBAGLAYOUT) {
+                            } else if (LAYOUT == BORDERLAYOUT) {
                                 panel.add(label, getTag(element, "position"));
                             } else if (LAYOUT == GRIDLAYOUT) {
                                 panel.add(label);
@@ -356,7 +376,7 @@ public class Frame extends JFrame {
                             if (LAYOUT == GRIDBAGLAYOUT) {
                                 setConstraints(element);
                                 panel.add(textField, constraints);
-                            } else if (LAYOUT == GRIDBAGLAYOUT) {
+                            } else if (LAYOUT == BORDERLAYOUT) {
                                 panel.add(textField, getTag(element, "position"));
                             } else if (LAYOUT == GRIDLAYOUT) {
                                 panel.add(textField);
@@ -366,15 +386,15 @@ public class Frame extends JFrame {
                             break;
 
                         case "panel":
-                            JPanel extra = XMLreader("src/com/frame/pages/components/" + getTag(element, "href") + ".xml", null);;
+                            JPanel extra = XMLreader("src/com/frame/pages/components/" + getTag(element, "href") + ".xml", values);
 
                             if (LAYOUT == GRIDBAGLAYOUT) {
                                 setConstraints(element);
                                 panel.add(extra, constraints);
-                            } else if (LAYOUT == GRIDBAGLAYOUT) {
+                            } else if (LAYOUT == BORDERLAYOUT) {
                                 panel.add(extra, getTag(element, "position"));
                             } else if (LAYOUT == GRIDLAYOUT) {
-                                panel.add(extra, Integer.parseInt(getTag(element, "gridx")), Integer.parseInt(getTag(element, "gridy")));
+                                panel.add(extra);
                             } else {
                                 panel.add(extra);
                             }
