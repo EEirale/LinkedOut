@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<main layout="Border" style="background-color:light-gray">
+    <object class="label" id="addPostLabel" size="360x60">
+        <position>West</position>
+        <text><![CDATA[<html><<h2>    Add New Post</h2></html>]]></text>
+    </object>
+    <object class="button" id="addPostButton" style="background-color: light-gray; icon: plus.png; icon-dim:30x30;" size="60x60">
+        <position>East</position>
+        <text></text>
+    </object>
+</main>

@@ -15,13 +15,13 @@
             <insets>15,25,0,25</insets>
         </constraints>
         <text><![CDATA[<html><h2>Sign Up</h2></html>]]></text>
-        <object class="button" id="signOutButton" style="background-color: red; foreground-color:white;" size="160x60">
-            <constraints>
-                <gridx>2</gridx>
-                <gridy>2</gridy>
-                <insets>15,25,0,25</insets>
-            </constraints>
-            <text><![CDATA[<html><h2>Sign Out</h2></html>]]></text>
-        </object>
+    </object>
+    <object class="button" id="signOutButton" style="background-color: red; foreground-color:white;" size="160x60">
+        <constraints>
+            <gridx>2</gridx>
+            <gridy>2</gridy>
+            <insets>15,25,0,25</insets>
+        </constraints>
+        <text><![CDATA[<html><h2>Sign Out</h2></html>]]></text>
     </object>
 </main>

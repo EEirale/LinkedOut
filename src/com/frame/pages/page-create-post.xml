@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<main layout="GridBag">
+    <object class="label" id ="tags" size="120x60">
+    <constraints>
+        <insets>10,0,10,0</insets>
+        <gridx>0</gridx>
+        <gridy>0</gridy>
+    </constraints>
+    <text><![CDATA[<html><h2>Tags</h2></html>]]></text>
+    </object>
+    <object class="textField" id ="tagsField" size="240x120">
+        <constraints>
+            <insets>20,0,20,0</insets>
+            <gridx>1</gridx>
+            <gridy>0</gridy>
+        </constraints>
+    </object>
+    <object class="label" id ="postLabel" size="240x120">
+        <constraints>
+            <insets>10,0,10,0</insets>
+            <gridx>0</gridx>
+            <gridy>1</gridy>
+        </constraints>
+        <text><![CDATA[<html><h2>Description</h2></html>]]></text>
+    </object>
+    <object class="textArea" id ="postField" size="240x240">
+        <constraints>
+            <insets>20,0,20,0</insets>
+            <gridx>1</gridx>
+            <gridy>1</gridy>
+        </constraints>
+    </object>
+    <object class="label" id ="uploadLabel" size="240x120">
+        <constraints>
+            <insets>10,0,10,0</insets>
+            <gridx>0</gridx>
+            <gridy>2</gridy>
+        </constraints>
+        <text><![CDATA[<html><h2>Upload Media</h2></html>]]></text>
+    </object>
+    <object class="button" id ="uploadButton" size="240x60" style="background-color:blue; foreground-color:white; icon: upload.png; icon-dim:45x45;">
+        <constraints>
+            <insets>10,25,10,25</insets>
+            <gridx>1</gridx>
+            <gridy>2</gridy>
+        </constraints>
+        <text><![CDATA[<html><h3>Upload</h3></html>]]></text>
+    </object>
+    <object class="button" id ="backButton" size="240x60" style="background-color:red; foreground-color:white;">
+        <constraints>
+            <insets>10,25,10,25</insets>
+            <gridx>0</gridx>
+            <gridy>3</gridy>
+        </constraints>
+        <text><![CDATA[<html><h3>Back</h3></html>]]></text>
+    </object>
+    <object class="button" id ="publishButton" size="240x60" style="background-color:blue; foreground-color:white;">
+        <constraints>
+            <insets>10,25,10,25</insets>
+            <gridx>1</gridx>
+            <gridy>3</gridy>
+        </constraints>
+        <text><![CDATA[<html><h3>Publish</h3></html>]]></text>
+    </object>
+</main>

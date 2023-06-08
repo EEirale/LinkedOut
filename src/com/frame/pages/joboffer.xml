@@ -16,6 +16,14 @@
         </constraints>
         <text>publication date</text>
     </object>
+    <object class="label" id="offerIDLabel" style="display:false" size="120x60" type="dynamic">
+        <constraints>
+            <gridx>2</gridx>
+            <gridy>0</gridy>
+            <insets>0,0,0,0</insets>
+        </constraints>
+        <text>offer ID</text>
+    </object>
     <object class="label" id="companyLabel" style="background-color:light-gray;" size="240x60"  type="dynamic">
         <constraints>
             <gridx>0</gridx>

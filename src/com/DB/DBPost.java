@@ -2,10 +2,8 @@ package com.DB;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Dictionary;
-import java.util.Hashtable;
-import java.util.List;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 public class DBPost extends DBManagement{
     public static List<Dictionary<String, String>> getPosts(){
@@ -45,21 +43,52 @@ public class DBPost extends DBManagement{
         return posts;
     }
 
-//    public static void insertPost(String text, String tags, Date date, Integer id){
-//        try {
-//            createConnection();
-//
-//            script="INSERT INTO gece_posts (description, tags, Password) " +
-//                    "VALUES (" +
-//                    "'"+ email +"', " +
-//                    "'"+ Date.toString() + "', " +
-//                    "'"+ password +"')";
-//
-//            statement.executeUpdate(script);
-//
-//            closeConnection();
-//        } catch(SQLException ex) {
-//            ex.printStackTrace();
-//        }
-//    }
+    public static Integer getPostId(String text, String tags){
+        Integer id = null;
+        try {
+            createConnection();
+
+            script= "SELECT ID FROM gece_posts WHERE gece_posts.Description = '" + text + "' AND gece_posts.tags = '" + tags +"'";
+
+            ResultSet output = statement.executeQuery(script);
+            output.next();
+            id =  output.getInt("ID");
+            closeConnection();
+        } catch(SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return id;
+    }
+
+    public static void insertPost(String text, String tags){
+        try {
+            createConnection();
+
+            script= "INSERT INTO gece_posts (description, tags) " +
+                    "VALUES ('"+ text +"', '"+ tags +"'); ";
+            statement.executeUpdate(script);
+
+            closeConnection();
+        } catch(SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public static void insertUserPost(String text, String tags, Date date,Integer post, Integer id){
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+        String _date = sdf.format(date);
+        try {
+            createConnection();
+
+            script = "INSERT INTO gece_usersposts (IdPost, IdUser, PublicationDate) " +
+                    "VALUES( " + post +", " + id +", " +
+                    "'"+ _date +"' " + ");";
+            statement.executeUpdate(script);
+
+            closeConnection();
+        } catch(SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
 }

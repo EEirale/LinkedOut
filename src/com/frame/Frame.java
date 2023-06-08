@@ -26,6 +26,7 @@ public class Frame extends JFrame {
     public static JScrollPane scrollPane = new JScrollPane(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
     protected final static GridBagConstraints constraints = new GridBagConstraints();
     public final static Dictionary<String, JTextField> textFields = new Hashtable<>();
+    public final static Dictionary<String, JTextArea> textAreas = new Hashtable<>();
     public final static Dictionary<String, StyledButton> buttons = new Hashtable<>();
     public final static Dictionary<String, JLabel> labels = new Hashtable<>();
 
@@ -381,6 +382,26 @@ public class Frame extends JFrame {
                                 panel.add(textField);
                             } else {
                                 panel.add(textField);
+                            }
+                            break;
+
+                        case "textArea":
+                            JTextArea textArea = new JTextArea();
+                            textArea.setLineWrap(true);
+
+                            textAreas.put(getAttribute(element, "id"), textArea);
+                            JScrollPane scroll = new JScrollPane(textArea, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+                            setSize(element, scroll);
+
+                            if (LAYOUT == GRIDBAGLAYOUT) {
+                                setConstraints(element);
+                                panel.add(scroll, constraints);
+                            } else if (LAYOUT == BORDERLAYOUT) {
+                                panel.add(scroll, getTag(element, "position"));
+                            } else if (LAYOUT == GRIDLAYOUT) {
+                                panel.add(scroll);
+                            } else {
+                                panel.add(scroll);
                             }
                             break;
 

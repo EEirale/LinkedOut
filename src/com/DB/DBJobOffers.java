@@ -13,7 +13,7 @@ public class DBJobOffers extends DBManagement{
         try {
             createConnection();
 
-            script="SELECT gece_joboffer.ID, gece_joboffer.Role, gece_joboffer.PublicationDate, gece_joboffer.ContractType, " +
+            script="SELECT gece_joboffer.IdOffer, gece_joboffer.Role, gece_joboffer.PublicationDate, gece_joboffer.ContractType, " +
                     "gece_joboffer.Salary, gece_joboffer.RequiredSkills, gece_companies.Name " +
                     "FROM gece_joboffer JOIN gece_companies ON gece_joboffer.IdCompanies = gece_companies.ID";
 
@@ -27,6 +27,7 @@ public class DBJobOffers extends DBManagement{
                 dict.put("contractLabel", output.getString("ContractType"));
                 dict.put("salaryLabel", "$ " + output.getString("Salary"));
                 dict.put("requiredSkillsLabel", output.getString("RequiredSkills"));
+                dict.put("offerIDLabel", output.getString("IdOffer"));
 
                 offers.add(dict);
 
