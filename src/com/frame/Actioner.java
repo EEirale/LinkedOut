@@ -75,7 +75,38 @@ public class Actioner {
     }
 
     public static void menu(){
-        Frame.buttons.get("accountButton").addActionListener(l-> System.out.println("Clicked account"));
+        Frame.buttons.get("accountButton").addActionListener(l-> {
+            if(Main.USER_ID == null){
+                JOptionPane.showMessageDialog(null,
+                        "You have to sign in to visualize your account",
+                        "Error",
+                        JOptionPane.WARNING_MESSAGE
+                );
+                return;
+            }
+
+            if(Main.PERSON){
+                Frame.window.remove(Frame.centerPanel);
+                Frame.window.remove(Frame.scrollPane);
+                Frame.centerPanel.removeAll();
+                Frame.centerPanel = Frame.XMLreader(
+                        Pages.PERSON,
+                        null);
+                refresh(Frame.centerPanel);
+                Frame.window.add(Frame.centerPanel);
+                refresh(Frame.window);
+            } else {
+                Frame.window.remove(Frame.centerPanel);
+                Frame.window.remove(Frame.scrollPane);
+                Frame.centerPanel.removeAll();
+                Frame.centerPanel = Frame.XMLreader(
+                        Pages.COMPANY,
+                        null);
+                refresh(Frame.centerPanel);
+                Frame.window.add(Frame.centerPanel);
+                refresh(Frame.window);
+            }
+        });
 
         Frame.buttons.get("homeButton").addActionListener(l->{
             Frame.window.remove(Frame.centerPanel);
@@ -180,7 +211,7 @@ public class Actioner {
     }
 
     public static void signUp(){
-
+        System.out.println("SingUp clicked");
     }
 
     public static void posts(){
@@ -211,8 +242,8 @@ public class Actioner {
         Frame.buttons.get("backButton").addActionListener(l-> Actioner.gotoPosts());
 
         Frame.buttons.get("publishButton").addActionListener(l->{
-            String _text= null;
-            String _tags= null;
+            String _text;
+            String _tags;
 
             if(!Objects.equals(Frame.textAreas.get("postField").getText(), "") && Frame.textAreas.get("postField") != null){
                 _text = Frame.textAreas.get("postField").getText();

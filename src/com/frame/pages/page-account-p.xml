@@ -1,4 +1,6 @@
 <?xml version="1.0"?>
-<main layout="GridBag">
-    <!-- Page to display account information: people-type -->
+<main layout="Flow">
+    <object class="label" id="personalLabel">
+        <text>PERSONAL ACCOUNT</text>
+    </object>
 </main>

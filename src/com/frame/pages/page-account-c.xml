@@ -1,4 +1,6 @@
 <?xml version="1.0"?>
-<main layout="GridBag">
-    <!-- Page to display account information: companies-type -->
+<main layout="Flow">
+    <object class="label" id="companyLabel">
+        <text>COMPANY ACCOUNT</text>
+    </object>
 </main>
