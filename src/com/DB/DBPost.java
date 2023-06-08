@@ -32,7 +32,7 @@ public class DBPost extends DBManagement{
                 dict.put("dateLabel", output.getString("PublicationDate"));
                 dict.put("postLabel", output.getString("description"));
                 dict.put("tagLabel", output.getString("tags"));
-                dict.put("IDlabel", output.getString("ID"));
+                dict.put("IDLabel", output.getString("ID"));
 
                 posts.add(dict);
             }

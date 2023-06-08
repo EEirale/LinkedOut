@@ -22,7 +22,7 @@
             <gridy>0</gridy>
             <insets>0,0,0,0</insets>
         </constraints>
-        <text>publication date</text>
+        <text>IDLabel</text>
     </object>
     <object class="label" id="postLabel" style="background-color:light-gray;" size="650x650" type="dynamic">
         <constraints>

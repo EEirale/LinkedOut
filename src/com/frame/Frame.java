@@ -107,7 +107,7 @@ public class Frame extends JFrame {
             c.setIcon(icon);
         }
 
-        if(!Objects.equals(attributes.get("display"), "")){
+        if(!Objects.equals(attributes.get("display"), null)){
             c.setVisible(
                     (Objects.equals(attributes.get("display"), "true"))
             );
@@ -198,7 +198,7 @@ public class Frame extends JFrame {
         }
 
 
-        if(!Objects.equals(attributes.get("display"), "")){
+        if(!Objects.equals(attributes.get("display"), null)){
             c.setVisible(
                     (Objects.equals(attributes.get("display"), "true"))
             );
@@ -252,7 +252,7 @@ public class Frame extends JFrame {
         }
 
 
-        if(!Objects.equals(attributes.get("display"), "")){
+        if(!Objects.equals(attributes.get("display"), null)){
             c.setVisible(
                     (Objects.equals(attributes.get("display"), "true"))
             );
@@ -275,7 +275,6 @@ public class Frame extends JFrame {
     }
 
     public static JPanel XMLreader(String filePath, Dictionary<String, String> values) {
-        int i = 0;
         JPanel panel = new JPanel();
 
         Integer LAYOUT;
@@ -324,7 +323,7 @@ public class Frame extends JFrame {
                     switch (getAttribute(element, "class")) {
                         case "button":
                             StyledButton button;
-                            if(Objects.equals(getAttribute(element, "type"), "dynamic")){
+                            if(values != null && (values.get(getAttribute(element, "id"))) != null && Objects.equals(getAttribute(element, "type"), "dynamic")){
                                 button = new StyledButton(values.get(getAttribute(element, "id")));
                             } else {
                                 button = new StyledButton(getTag(element, "text"));
@@ -409,7 +408,6 @@ public class Frame extends JFrame {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return panel;
     }
 

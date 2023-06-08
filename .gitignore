@@ -27,4 +27,4 @@ bin/
 .DS_Store
 
 ### DBManagement Class ###
-src/com/DB/DBManagement.java
+DBManagement.java
