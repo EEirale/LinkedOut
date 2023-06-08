@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class DBManagement {
-    private final static String USER = "cocito";
+    private final static String USER = "cocito_root";
     private final static String PASSWORD = "cocito2022";
 
     protected static Connection connection;
